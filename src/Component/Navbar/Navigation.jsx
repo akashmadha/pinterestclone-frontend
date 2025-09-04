@@ -6,6 +6,7 @@ import './Navigation.css';
 function Navigation({ setIsAuthenticated }) {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isSignupOpen, setIsSignupOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleLogin = () => {
         setIsAuthenticated(true);
@@ -35,6 +36,11 @@ function Navigation({ setIsAuthenticated }) {
                 zIndex: 999
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <button className="nav-hamburger" aria-label="Toggle menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        <span className="bar" />
+                        <span className="bar" />
+                        <span className="bar" />
+                    </button>
                     <svg height="32" width="32" viewBox="0 0 24 24" aria-label="Pinterest logo">
                         <path
                             fill="#e60023"
@@ -44,7 +50,7 @@ function Navigation({ setIsAuthenticated }) {
                     <span style={{ fontSize: '22px', fontWeight: 'bold', color: '#333' }}>Pinterest</span>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <div className={`nav-actions ${isMenuOpen ? 'open' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                     <button style={{ 
                         background: 'none', 
                         border: 'none', 

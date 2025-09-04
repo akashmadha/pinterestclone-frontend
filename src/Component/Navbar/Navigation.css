@@ -20,13 +20,37 @@
         gap: 12px !important;
     }
     
-    nav[style] > div:last-child button:not([style*="backgroundColor"]) {
+    /* Hide action buttons until hamburger opens */
+    nav[style] .nav-actions {
         display: none !important;
+        width: 100%;
+        justify-content: flex-end;
+    }
+    nav[style] .nav-actions.open {
+        display: flex !important;
+        flex-wrap: wrap;
     }
     
     nav[style] > div:last-child button[style*="backgroundColor"] {
         padding: 10px 16px !important;
         font-size: 14px !important;
+    }
+
+    /* Hamburger button */
+    .nav-hamburger {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 3px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-right: 8px;
+    }
+    .nav-hamburger .bar {
+        width: 20px;
+        height: 2px;
+        background: #333;
+        display: block;
     }
 }
 
