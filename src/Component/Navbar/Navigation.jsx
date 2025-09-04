@@ -41,6 +41,8 @@ function Navigation({ setIsAuthenticated }) {
                         <span className="bar" />
                         <span className="bar" />
                     </button>
+                </div>
+                <div className="nav-brand" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <svg height="32" width="32" viewBox="0 0 24 24" aria-label="Pinterest logo">
                         <path
                             fill="#e60023"
