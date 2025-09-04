@@ -1,7 +1,6 @@
 import { useState } from "react";
-import "./Register.css"; // Import the CSS file
 
-const Register = ({ onClose }) => {
+const Register = ({ setIsAuthenticated }) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -29,60 +28,133 @@ const Register = ({ onClose }) => {
     };
 
     return (
-        <div className="register-popup-overlay">
-        <div className="register-popup">
-            <span className="register-close-btn" onClick={onClose}>
-                &times;
-            </span>
-            <div> <svg height="24" width="24" viewBox="0 0 24 24" aria-label="Pinterest logo">
-                  <path
-                    fill="red"
-                    d="M0 12c0 5.123 3.211 9.497 7.73 11.218-.11-.937-.227-2.482.025-3.566.217-.932 1.401-5.938 1.401-5.938s-.357-.715-.357-1.774c0-1.66.962-2.9 2.161-2.9 1.02 0 1.512.765 1.512 1.682 0 1.025-.653 2.557-.99 3.978-.281 1.189.597 2.159 1.769 2.159 2.123 0 3.756-2.239 3.756-5.471 0-2.861-2.056-4.86-4.991-4.86-3.398 0-5.393 2.549-5.393 5.184 0 1.027.395 2.127.889 2.726a.36.36 0 0 1 .083.343c-.091.378-.293 1.189-.332 1.355-.053.218-.173.265-.4.159-1.492-.694-2.424-2.875-2.424-4.627 0-3.769 2.737-7.229 7.892-7.229 4.144 0 7.365 2.953 7.365 6.899 0 4.117-2.595 7.431-6.199 7.431-1.211 0-2.348-.63-2.738-1.373 0 0-.599 2.282-.744 2.84-.282 1.084-1.064 2.456-1.549 3.235C9.584 23.815 10.77 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12"
-                  ></path>
-                </svg></div>
-            <h2 className="register-title">Welcome to Pinterest</h2>
-            <p>Find new ideas to try</p>
-            {message && <p>{message}</p>}
-            <form className="register-form" onSubmit={handleRegister}>
-                <label>Username</label>
-                <input
-                    type="text"
-                    placeholder="Enter username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
+        <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: 'calc(100vh - 80px)',
+            padding: '20px'
+        }}>
 
-                <label>Email</label>
-                <input
-                    type="email"
-                    placeholder="Enter email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
+            {/* Register Form */}
+            <div style={{ 
+                maxWidth: '400px', 
+                width: '100%',
+                backgroundColor: 'white', 
+                padding: '40px', 
+                borderRadius: '16px', 
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                textAlign: 'center'
+            }}>
+                <h2 style={{ fontSize: '32px', fontWeight: 'bold', color: '#333', marginBottom: '10px' }}>
+                    Welcome to Pinterest
+                </h2>
+                <p style={{ color: '#767676', marginBottom: '30px' }}>Find new ideas to try</p>
+                
+                {message && (
+                    <p style={{ 
+                        padding: '10px', 
+                        backgroundColor: message.includes('successful') ? '#d4edda' : '#f8d7da',
+                        color: message.includes('successful') ? '#155724' : '#721c24',
+                        border: `1px solid ${message.includes('successful') ? '#c3e6cb' : '#f5c6cb'}`,
+                        borderRadius: '4px',
+                        marginBottom: '15px'
+                    }}>
+                        {message}
+                    </p>
+                )}
+                
+                <form onSubmit={handleRegister} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                    <div style={{ textAlign: 'left' }}>
+                        <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', color: '#333' }}>
+                            User Name
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter your username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                            style={{ 
+                                width: '100%', 
+                                padding: '16px', 
+                                border: '2px solid #ddd', 
+                                borderRadius: '16px', 
+                                fontSize: '16px',
+                                outline: 'none',
+                                boxSizing: 'border-box'
+                            }}
+                        />
+                    </div>
 
-                <label>Password</label>
-                <div className="password-box">
-                    <input
-                        type="password"
-                        placeholder="Enter password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                    <span className="eye-icon">👁️</span>
-                </div>
+                    <div style={{ textAlign: 'left' }}>
+                        <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', color: '#333' }}>
+                            Email Address
+                        </label>
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            style={{ 
+                                width: '100%', 
+                                padding: '16px', 
+                                border: '2px solid #ddd', 
+                                borderRadius: '16px', 
+                                fontSize: '16px',
+                                outline: 'none',
+                                boxSizing: 'border-box'
+                            }}
+                        />
+                    </div>
 
-                <button className="register-button" type="submit">
-                    Register
-                </button>
-            </form>
-            <p className="already-account">
-                Already have an account? <a href="/login">Login here</a>
-            </p>
+                    <div style={{ textAlign: 'left' }}>
+                        <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', color: '#333' }}>
+                            New Password
+                        </label>
+                        <input
+                            type="password"
+                            placeholder="Create a strong password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            style={{ 
+                                width: '100%', 
+                                padding: '16px', 
+                                border: '2px solid #ddd', 
+                                borderRadius: '16px', 
+                                fontSize: '16px',
+                                outline: 'none',
+                                boxSizing: 'border-box'
+                            }}
+                        />
+                    </div>
+
+                    <button 
+                        type="submit"
+                        style={{ 
+                            width: '100%',
+                            padding: '16px', 
+                            backgroundColor: '#e60023', 
+                            color: 'white', 
+                            border: 'none', 
+                            borderRadius: '24px', 
+                            fontSize: '16px', 
+                            fontWeight: 'bold',
+                            cursor: 'pointer',
+                            marginTop: '10px'
+                        }}
+                    >
+                        Continue
+                    </button>
+                </form>
+                
+                <p style={{ marginTop: '20px', color: '#767676' }}>
+                    Already have an account? <a href="/login" style={{ color: '#e60023', textDecoration: 'none', fontWeight: 'bold' }}>Log in here</a>
+                </p>
+            </div>
         </div>
-    </div>
     );
 };
 

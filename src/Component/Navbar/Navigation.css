@@ -1,0 +1,55 @@
+/* Responsive Navigation Styles - Mobile Only Adjustments */
+
+/* Mobile responsive styles - hide menu items on small screens */
+@media (max-width: 767px) {
+    nav[style] {
+        padding: 8px 16px !important;
+        flex-wrap: wrap;
+    }
+    
+    nav[style] > div:first-child svg {
+        height: 28px !important;
+        width: 28px !important;
+    }
+    
+    nav[style] > div:first-child span {
+        font-size: 18px !important;
+    }
+    
+    nav[style] > div:last-child {
+        gap: 12px !important;
+    }
+    
+    nav[style] > div:last-child button:not([style*="backgroundColor"]) {
+        display: none !important;
+    }
+    
+    nav[style] > div:last-child button[style*="backgroundColor"] {
+        padding: 10px 16px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 575px) {
+    nav[style] {
+        padding: 6px 12px !important;
+    }
+    
+    nav[style] > div:first-child svg {
+        height: 24px !important;
+        width: 24px !important;
+    }
+    
+    nav[style] > div:first-child span {
+        font-size: 16px !important;
+    }
+    
+    nav[style] > div:last-child {
+        gap: 8px !important;
+    }
+    
+    nav[style] > div:last-child button[style*="backgroundColor"] {
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+    }
+}

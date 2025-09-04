@@ -24,6 +24,29 @@ main {
     height: 5rem;
 }
 
+/* Responsive typography - only for smaller screens */
+@media (max-width: 767px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+        height: 3rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+        height: 2.5rem;
+    }
+}
+
 /* Dots */
 .dots-container {
     display: flex;
@@ -53,14 +76,25 @@ main {
 /* Image Grid */
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
     margin-top: 3rem;
 }
 
-@media (min-width: 768px) {
+/* Responsive adjustments - only for smaller screens */
+@media (max-width: 767px) {
     .image-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin-top: 2.5rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .image-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+        margin-top: 2rem;
     }
 }
 
